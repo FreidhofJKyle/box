@@ -51,7 +51,7 @@ while getopts ":abcdefghijkl" opt; do
 
 
 # if the user chooses -f remove the the distrobox based on the name 
-		f)
+		r)
 			read -rp "Enter the distrobox you want to remove: " distro
 			distrobox rm "$distro"
 			;; 
@@ -135,6 +135,13 @@ while getopts ":abcdefghijkl" opt; do
 		wget -qO- https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
 
 			;;
+
+# if the user chooses -f remove the the distrobox based on the name 
+		f)
+			read -rp "Enter the distrobox you want to remove: " distro
+			distrobox rm -f "$distro"
+			;; 
+
 
 
 # if the user chooses option not found give them an error message saying 
