@@ -1,0 +1,127 @@
+					The Box Script Manual 
+
+
+Author: Kyle Freidhof 
+
+Created: 10/2/23 
+
+Description: Box is a script that manages distrobox by giving Box and option like -h to list 
+help
+
+a: When the -a command is ran it will create a Fedora distrobox named test for the user 
+and also enter the distrobox
+
+How to use 
+
+For example:
+	box -a
+
+This will create a distrobox container named test defaulted to fedora. Then it will run the fedora distrobox.  
+b: if the -b command is ran prompt to enter input for creating a distrobox. Based on the distroboxes avalible. 
+
+This is a list of containers that are avalible to run in distrobox on the website here. 
+https://github.com/89luca89/distrobox/blob/main/docs/compatibility.md#host-distros
+
+How to use
+
+For example:
+	   box -b
+
+Based on what is put in the input field it will create a container based on the input
+
+c: if the -c command is ran list the distrobox containers that are currently installed
+
+How to use 
+
+For example:
+		box -c 
+
+This will list the avalible distroboxes on the system 
+
+d: if the -d option is stated the it will enter into a distrobox container based on the input given
+
+How to use
+
+For example:
+	box -d 
+
+This will enter into a distrobox container based on the given name. 
+
+e: if the -e option is stated then it will stop a distrobox container based on the input given
+
+How to use 
+
+For example: 
+
+	box -e 
+
+Stop a distrobox container based on a container given 
+
+	 
+f: if the -f option is stated then remove a distrobox container based on the name give
+
+How to use
+
+For example:
+
+	box -f 
+Remove a distrobox container based on the input given
+
+g: if the -g option is stated then export a app based on the given name when inside the distroboxcontainer
+
+How to use
+
+For example:
+
+	box -g 
+
+Note: You must be inside the distrobox container for it to work. 
+
+When inside a distrobox Container it will export an app outside of distrobox. So it can be ran
+on the host operating system. 
+
+i: will install distrobox for the given distrobution based on the input given
+
+How to use 
+
+For example:
+
+	box -i 
+
+When this is ran it will install distrobox based on the given selection fedora debain or Arch linux.
+
+h: When the -h option is ran it will enter you into the box manual. It will give options and helpon what how to use box. 
+
+How to use
+
+For example: 
+
+	box -h 
+
+This will give help when ran 
+
+j: This will allow a command to be ran inside a distrobox container once. Based on the input given for the command
+
+How to use 
+
+For example:
+
+	box -j
+
+This will run a command inside a distrobox container when ran based on input given
+
+k: It will allow you to install distrobox manually using the curl command 
+
+How to use
+For example:
+	   box -k 
+
+This will install distrobox manually on a linux distro using curl 
+
+l: It will allow you to install disrtobox manually on using the wget command 
+
+How to use 
+For example: 
+	box -l
+
+This will install distrobox manually on a linux distro. 
