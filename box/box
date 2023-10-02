@@ -59,7 +59,7 @@ while getopts ":abcdefghijkl" opt; do
 # if the user chooses -g export the app inside the distrobox container based on the app name
 		g)
 			read -rp "Enter distro name you want to export: " app
-			distrobox --app "$app"
+			distrobox-export --app "$app"
 			;;
 
 
