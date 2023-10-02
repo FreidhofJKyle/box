@@ -65,7 +65,7 @@ while getopts ":abcdefghijkl" opt; do
 
 # if the user chooses the -h option show the user a list of commands to help them out with
 		h)
-			less Manual/Man.txt
+			less /usr/share/doc/box/Man.txt
 			;;
 
 # if the user chooses the -i option tell the user what distro they want to install distrobox
