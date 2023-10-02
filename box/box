@@ -1,0 +1,180 @@
+#!/usr/bin/env bash 
+
+# Name: Kyle Freidhof
+
+# Script: create.sh
+
+# Created: October, 2 2023
+
+# About: A script that manages distrobox for me 
+
+# if any command fails exit
+set -e
+
+# Varriables for curl and wget
+curl="which curl"
+wget="which wget"
+
+# The while loop for options when runing the shell script. 
+while getopts ":abcdefghijkl" opt; do
+	
+	# Case statement option
+	case $opt in 
+# if the user chooses -a then create a fedora distrobox for the user
+		a)
+			distrobox create -n test
+			;;
+
+
+
+# if the user chooses the -b option ask the user if they want to create a distrobox
+		b)
+			read -rp "Enter distro you want to create: " distro
+			distrobox create -i "$distro"
+			;;
+# if the user chooses -c list the distroboxes the user currently has
+		c)
+			distrobox list
+			;;
+
+# if the user chooses -d  enter in to a distrobox based on the name given 
+		d)
+			read -rp "What distro do you want to enter: " distro
+			distrobox enter "$distro"
+			;;
+
+# if the user chooses -e stop the distrobox based on the name
+		e)
+			read -rp "Enter the the Distro you want to stop: " distro
+			distrobox stop "$distro"
+			;;
+
+
+# if the user chooses -f remove the the distrobox based on the name 
+		f)
+			read -rp "Enter the distrobox you want to remove: "
+			distrobox rm "$distro"
+			;; 
+
+# if the user chooses -g export the app inside the distrobox container based on the app name
+		g)
+			read -rp "Enter distro name you want to export: " app
+			distrobox --app "$app"
+			;;
+
+
+# if the user chooses the -h option show the user a list of commands to help them out with
+		h)
+			less Manual/Man.txt
+			;;
+
+# if the user chooses the -i option tell the user what distro they want to install distrobox
+# on 
+		i)
+			echo "f. Fedora"
+			echo "a. Arch"
+			echo "d. Debian"
+			read -rp "What distro do you want to install it for: " choice
+
+	# if the user chooses option d install it on Debian or any Debian based distro.  
+			if [ "$choice" == d ] || [ "$choice" == D ]; then
+				sudo apt-get install distrobox
+				exit
+    # if the user chooses a install it on arch linux 
+			elif [ "$choice" == a ] || [ "$choice" == A ]; then
+				sudo pacman -S distrobox
+				exit
+
+	# if the user chooses the -f option install it on fedora 
+			elif [ "$choice" == F ] || [ "$choice" == f ]; then
+				sudo dnf install distrobox
+				exit
+
+	# if the user chooses wrong option give them an error message explaining what 
+	# They did wrong.  
+			else
+				echo "Error: choose f,a,or d if you need help run manage -h"
+				exit
+
+			fi
+
+			;;
+# If the user chooses the -j option install enter in the command and the container
+# you want to run inside the distrobox container once. 
+		j)
+			read -rp "Enter a command to run inside distrobox" cmd
+			read -rp "What container" cont
+			distrobox enter "$cont" -- "$cmd"
+			;;
+# if the user choose the -k option install distrobox manually using curl
+		k)
+			
+			# if curl is not found when -k is ran then give the user and error message saying
+			# Curl is not found 
+			if ! which "$curl" >> /dev/null; then
+				echo "Error: curl not found"
+				exit
+
+			fi
+
+			curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
+			;;
+
+
+# if the user chooses l install the distrobox manually using wget 
+
+		l)
+		# if wget is not found give the user and error message saying wget is not found
+			if ! which "$wget" >> /dev/null; then
+				echo "Error: wget not found"
+				exit 
+
+
+			fi
+			
+		wget -qO- https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
+
+			;;
+
+
+# if the user chooses option not found give them an error message saying 
+# To run the -h option to list all the options to run. 
+		*)
+			echo "Option not found run manage -h to see a list of options"
+			exit
+
+
+# closing the case statement
+esac
+
+# closing the while loop
+done 
+
+			
+
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+
+			
